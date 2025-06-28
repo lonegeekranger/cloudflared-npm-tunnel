@@ -1,5 +1,7 @@
 # cloudflared-tunnels
 
-Build:
+## Build:
 
-docker build -t custom-cloudflared .
+docker build \
+ --build-arg NPM_DOMAIN=npm.yourdomain.com \
+ -t cloudflared-npm-tunnel .
