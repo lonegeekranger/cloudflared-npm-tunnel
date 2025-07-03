@@ -76,7 +76,7 @@ services:
     container_name: cloudflared-npm
     environment:
       - NPM_DOMAIN=tunnel.midominio.com
-      - NPM_IP=172.30.0.3
+      - NPM_IP=192.168.0.3
       - NPM_PORT=8080
     volumes:
       - cloudflared-npm-data:/home/app/data
