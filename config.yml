@@ -1,2 +1,0 @@
-tunnel: npm
-credentials-file: /root/.cloudflared/__NPM_KEY__.json

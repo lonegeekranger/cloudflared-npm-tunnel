@@ -31,7 +31,7 @@ Antes de ejecutar este contenedor necesitas:
 ## 🐳 Ejemplo de uso (modo terminal)
 
 ```bash
-docker run --rm -it   -e NPM_DOMAIN=tunnel.midominio.com   -e NPM_IP=192.168.0.3   -e NPM_PORT=8080   -v cloudflared-npm-data:/home/app   cloudflared-npm-tunnel
+docker run --rm -it   -e NPM_DOMAIN=tunnel.midominio.com   -e NPM_IP=192.168.0.3   -e NPM_PORT=8080   -v cloudflared-npm-data:/home/app/data   cloudflared-npm-tunnel
 ```
 
 La primera vez te pedirá abrir una URL para autenticar el contenedor con tu cuenta de Cloudflare. Ese paso es necesario solo una vez.
@@ -44,7 +44,7 @@ La primera vez te pedirá abrir una URL para autenticar el contenedor con tu cue
 2. Descarga `cloudflared` si no existe.
 3. Realiza `tunnel login` si es la primera vez.
 4. Crea un túnel llamado `npm` (o lo recrea si ya existe).
-5. Configura `/home/app/config.yml` con el ID del túnel.
+5. Configura `/home/app/data/config.yml` con el ID del túnel.
 6. Asocia el túnel con el dominio indicado (`NPM_DOMAIN`).
 7. Lanza el túnel apuntando al servicio que defines con IP y puerto.
 
@@ -79,7 +79,7 @@ services:
       - NPM_IP=172.30.0.3
       - NPM_PORT=8080
     volumes:
-      - cloudflared-npm-data:/home/app
+      - cloudflared-npm-data:/home/app/data
     restart: unless-stopped
     tty: true
     stdin_open: true
@@ -95,7 +95,7 @@ volumes:
 Si necesitas eliminar todo y partir de cero:
 
 ```bash
-docker run --rm -it   -e NPM_DOMAIN=...   -e NPM_IP=...   -e NPM_PORT=...   -e WIPE=true   -v cloudflared-npm-data:/home/app   cloudflared-npm-tunnel
+docker run --rm -it   -e NPM_DOMAIN=...   -e NPM_IP=...   -e NPM_PORT=...   -e WIPE=true   -v cloudflared-npm-data:/home/app/data   cloudflared-npm-tunnel
 ```
 
 ---
